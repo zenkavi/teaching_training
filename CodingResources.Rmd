@@ -1,0 +1,17 @@
+# Coding resources
+
+## Experiment Coding
+O-Tree
+jsPsych
+
+## Stats Coding
+Intro to R and R-studio
+Making R notebooks
+
+## General purpose
+Python
+
+## Imaging Analysis
+MRI-QC
+fmriprep
+Nipype

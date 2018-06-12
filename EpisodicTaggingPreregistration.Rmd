@@ -1,0 +1,4 @@
+[Public template for pre-registration](https://osf.io/k5wns/)
+
+Make use of this doc when writing the IRB protocol for this project.
+More details on Stanford IRB procedures [here](http://humansubjects.stanford.edu/new/resources/researchers/index.html)

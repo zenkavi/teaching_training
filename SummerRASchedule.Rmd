@@ -1,13 +1,4 @@
-Summer RA schedule
-
-TODO:
-o tree training
-irb's
-preregistration
-
-Resources:
-
-Episodic Tagging - Readings:
+# Summer 2018 RA schedule
 
 Week 1:
 Goals:
