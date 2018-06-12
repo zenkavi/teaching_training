@@ -1,1 +1,7 @@
 # How to Read Research Papers
+
+Hypothesis  
+IV
+DV  
+Result
+Justified?
