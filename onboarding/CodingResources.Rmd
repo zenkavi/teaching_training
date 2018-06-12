@@ -1,12 +1,12 @@
 # Coding resources
 
 ## Experiment Coding
-O-Tree
-jsPsych
+[O-Tree](https://www.otree.org/)
+[jsPsych](https://www.jspsych.org/)
 
 ## Stats Coding
-Intro to R and R-studio
-Making R notebooks
+[Intro to R and R-studio](http://www.datacarpentry.org/R-ecology-lesson/index.html)
+[Making R notebooks](https://rmarkdown.rstudio.com/r_notebooks.html)
 
 ## General purpose
 Python
