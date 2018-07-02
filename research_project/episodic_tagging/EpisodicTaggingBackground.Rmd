@@ -1,6 +1,6 @@
 # Episodic Tagging Background
 
-**Record reading responses [here](https://docs.google.com/spreadsheets/d/1rvgFBIHkx0lYMrKbI0QLT9KvEoggyIo54hlFbpklYrU/edit?usp=sharing)**
+### Record reading responses [here](https://docs.google.com/spreadsheets/d/1rvgFBIHkx0lYMrKbI0QLT9KvEoggyIo54hlFbpklYrU/edit?usp=sharing)
 
 Atance, C. M., & O’Neill, D. K. (2001). Episodic future thinking. Trends in Cognitive Sciences, 5(12), 533–539.
 
@@ -37,6 +37,8 @@ May, F. (2017). The Effect of Future Event Markers on Intertemporal Choice Is Mo
 Murty, V. P., FeldmanHall, O., & Hunter, L. E. (2016). Episodic memories predict adaptive value-based decision-making. Journal of. Retrieved from http://psycnet.apa.org/record/2016-13814-001
 
 Murty, V. P., FeldmanHall, O., Hunter, L. E., Phelps, E. A., & Davachi, L. (2016). Episodic memories predict adaptive value-based decision-making. Journal of Experimental Psychology. General, 145(5), 548–558.
+
+Peters, J., & Büchel, C. (2010). Episodic future thinking reduces reward delay discounting through an enhancement of prefrontal-mediotemporal interactions. Neuron, 66(1), 138–148.
 
 Sasse, L. K., Peters, J., Büchel, C., & Brassen, S. (2015). Effects of prospective thinking on intertemporal choice: The role of familiarity. Human Brain Mapping, 36(10), 4210–4221.
 
