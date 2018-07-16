@@ -3,17 +3,22 @@
 **Thursdays**: Weekly debrief and planning for the next week
 
 ## Week 1: 07/16 - 07/20
-Goals:  
-Steps:  
+
+Tutorials:
+- Github
+- Delay Discounting
+- How to read papers
+- Hacking hours?
+
+TO DO:
+- Create Asana account and turn this doc in to a shared project
+- Draft email for data request from conference programs  
+- Comb through conference programs and contacting researchers
+    - Conference list: Judgment and Decision Making, Neuroeconomics, SFN, OHBM, ACR, BDRM, SAS, SPSP, SANS
+- Organizing any responses from posting on listserves for unpublished data    
 
 ## Week 2: 07/23 - 07/27
-Goals:  
-Steps:  
 
 ## Week 3: 07/30 - 08/03
-Goals:  
-Steps:  
 
 ## Week 4: 08/06 - 08/10
-Goals:  
-Steps:  
