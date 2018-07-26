@@ -6,12 +6,27 @@ toc: yes
 toc_float: yes
 ---
 
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+```
+
 This is a quick workshop covering some frequently used statistical tests in psych. The goal is not to cover all the theory and math underlying these tests but to provide an intuition on what question they are intended to address, what their main inputs and outputs are, how they are often visualized and how to run them in R.
 
-To 
+To demonstrate most of the methods we'll use a sample dataset provided in R.
 
 ```{r}
 iris
+```
+
+Always start with getting a sense of your data!!
+
+```{r}
+str(iris)
+```
+
+```{r}
+summary(iris)
 ```
 
 # (Linear) Correlation - Pearson's correlation
@@ -22,7 +37,29 @@ Output: r value, p value
 Typical plot: scatter plot
 
 ```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
 
+```{r}
+cor.test(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+```{r}
+iris %>%
+  ggplot(aes(Sepal.Length, Sepal.Width))+
+  geom_point()+
+  geom_smooth(method="lm")
+```
+
+```{r}
+cor.test(iris$Petal.Length, iris$Petal.Width)
+```
+
+```{r}
+iris %>%
+  ggplot(aes(Petal.Length, Petal.Width))+
+  geom_point()+
+  geom_smooth(method="lm")
 ```
 
 # T-test
@@ -32,8 +69,22 @@ Type of variables: 1 continous, 1 categorical with 2 levels
 Output: t value, df, p value
 Typical plot: boxplot, barplot
 
-```{r}
+Important arguments for the `t.test` function:
+- `alternative`: 
+- `paired`: default is `FALSE`; should be set to `TRUE` if the levels refer to different conditions for the same sample
 
+```{r}
+iris %>%
+  filter(Species != "virginica") %>%
+  ggplot(aes(Species, Sepal.Length))+
+  geom_violin()
+```
+
+```{r}
+iris %>%
+  filter(Species != "virginica") %>%
+  ggplot(aes(Sepal.Length, fill=Species, col=Species))+
+  geom_density(alpha=0.5)
 ```
 
 # ANOVA
@@ -44,7 +95,9 @@ Output: F value, df, p value
 Typical plot: boxplot, barplot
 
 ```{r}
-
+iris %>%
+  ggplot(aes(Species, Sepal.Length))+
+  geom_boxplot()
 ```
 
 # Linear regression
@@ -76,4 +129,10 @@ Typical plot: scatterplot, boxplot, barplot
 
 # What is a p-value
 
-Not fully comprehensive but [here](http://abacus.bates.edu/~ganderso/biology/resources/stats_flow_chart_v2014.pdf) is an example flowchart of how to choose the correct statistical test depending on your data.
+
+# TIPS:
+
+- I repeat: Always start with getting a good understanding of the structure of your data.  
+- Not fully comprehensive but [here](http://abacus.bates.edu/~ganderso/biology/resources/stats_flow_chart_v2014.pdf) is an example flowchart of how to choose the correct statistical test depending on your data.  
+- Whenever you have a question on your data try to imagine what the plot should look like.  
+- Better yet simulate some data (i.e. create some fake data) and actually make the plot.  
