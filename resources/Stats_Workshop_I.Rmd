@@ -128,6 +128,17 @@ iris %>%
   geom_density(alpha=0.5)
 ```
 
+```{r}
+iris %>% 
+  group_by(Species) %>%
+  summarise(mean_sl = mean(Sepal.Length),
+            sem_sl = sd(Sepal.Length)/sqrt(n())) %>%
+  ggplot(aes(Species, mean_sl, fill=Species))+
+  geom_bar(stat = 'identity', alpha = 0.5, width = 0.75)+
+  geom_errorbar(aes(ymin = mean_sl-sem_sl, ymax = mean_sl+sem_sl), width = 0.5)+
+  xlab("Mean Sepal Length")
+```
+
 Only tells us that the means for the groups are different. DOES NOT tell us which is greater than the other. To determine that you'd either run pairwise t-tests or linear regression.
 
 ```{r}
@@ -142,14 +153,48 @@ with(iris, pairwise.t.test(Sepal.Length, Species))
 
 ## Linear regression
 
-Number of variables: >=2
-Type of variables: 1 continous DV, >=1 IV both continuos and categorical
-Output: (standardized) regression coefficients, t value, df, p value
-Typical plot: scatterplot, boxplot, barplot
+- Number of variables: >=2  
+- Type of variables: 1 continous DV, >=1 IV both continuos and categorical    
+- Output: (standardized) regression coefficients, t value, df, p value   
+- Typical plot: scatterplot, boxplot, barplot  
 
 ```{r}
-
+iris %>%
+  ggplot(aes(Petal.Length, Petal.Width, color=Species))+
+  geom_point()+
+  geom_smooth(method = "lm")
 ```
+
+```{r}
+summary(lm(Petal.Width ~ Petal.Length+Species, iris))
+```
+
+This is an additive model. It checks for the main effect of `Species` and of `Petal.Length` separately. It tests whether   
+1. `Petal.Width` increases significantly as `Petal.Length` increases
+2. There are significant differences between the average `Petal.Width` of the other two `Species` compared to setosa.  
+
+It DOES NOT check whether `Petal.Width` increases significantly by `Petal.Length` at *different rates* depending on the `Species`. This would be an *interactive* model.
+
+### Model comparison/selection
+
+CAN ONLY BE DONE WITH NESTED MODELS
+
+```{r}
+m1a = lm(Petal.Width ~ Petal.Length, iris)
+m1b = lm(Petal.Width ~ Species, iris)
+m2 = lm(Petal.Width ~ Petal.Length+Species, iris)
+m3 = lm(Petal.Width ~ Petal.Length*Species, iris)
+```
+
+```{r}
+anova(m1a, m2, m3)
+```
+
+```{r}
+anova(m1b, m2, m3)
+```
+
+Conclusion: `m2`, the additive model, is the best.
 
 ## Generalized linear regression
 
