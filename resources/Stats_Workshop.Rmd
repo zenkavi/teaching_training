@@ -1,0 +1,79 @@
+---
+title: 'Stats workshop'
+output:
+github_document:
+toc: yes
+toc_float: yes
+---
+
+This is a quick workshop covering some frequently used statistical tests in psych. The goal is not to cover all the theory and math underlying these tests but to provide an intuition on what question they are intended to address, what their main inputs and outputs are, how they are often visualized and how to run them in R.
+
+To 
+
+```{r}
+iris
+```
+
+# (Linear) Correlation - Pearson's correlation
+
+Number of variables: 2
+Type of variables: continous 
+Output: r value, p value
+Typical plot: scatter plot
+
+```{r}
+
+```
+
+# T-test
+
+Number of variables: 2
+Type of variables: 1 continous, 1 categorical with 2 levels
+Output: t value, df, p value
+Typical plot: boxplot, barplot
+
+```{r}
+
+```
+
+# ANOVA
+
+Number of variables: >=2
+Type of variables: 1 continous DV, >=1 IV both continuos and categorical 
+Output: F value, df, p value
+Typical plot: boxplot, barplot
+
+```{r}
+
+```
+
+# Linear regression
+
+Number of variables: >=2
+Type of variables: 1 continous DV, >=1 IV both continuos and categorical
+Output: (standardized) regression coefficients, t value, df, p value
+Typical plot: scatterplot, boxplot, barplot
+
+```{r}
+
+```
+
+# Generalized linear regression
+
+Number of variables: >=2
+Type of variables: 1 DV of any type (e.g. binary responses), >=1 IV both continuos and categorical
+Output: (standardized) regression coefficients, t value, df, p value
+Typical plot: scatterplot, boxplot, barplot
+
+```{r}
+
+```
+
+
+# What is a t-value
+
+# What is a z-value
+
+# What is a p-value
+
+Not fully comprehensive but [here](http://abacus.bates.edu/~ganderso/biology/resources/stats_flow_chart_v2014.pdf) is an example flowchart of how to choose the correct statistical test depending on your data.
