@@ -13,6 +13,8 @@ Load libraries and set theme for figures
 ```{r}
 library(tidyverse)
 theme_set(theme_bw())
+library(rmarkdown)
+render_this <- function(){rmarkdown::render('/Users/zeynepenkavi/Dropbox/PoldrackLab/training_resources/resources/Stats_Workshop_I.Rmd', output_dir = '/Users/zeynepenkavi/Dropbox/PoldrackLab/training_resources/resources', html_notebook(toc = T, toc_float = T, toc_depth = 2, code_folding = 'hide'))}
 ```
 
 This is a quick workshop covering some frequently used statistical tests in psych. The goal is not to cover all the theory and math underlying these tests but to provide an intuition on what question they are intended to address, what their main inputs and outputs are, how they are often visualized and how to run them in R.
@@ -66,7 +68,7 @@ iris %>%
   geom_smooth(method="lm")
 ```
 
-# T-test
+## T-test
 
 - Number of variables: 2  
 - Type of variables: 1 continous, 1 categorical with 2 levels  
@@ -198,10 +200,10 @@ Conclusion: `m2`, the additive model, is the best.
 
 ## Generalized linear regression
 
-Number of variables: >=2
-Type of variables: 1 DV of any type (e.g. binary responses), >=1 IV both continuos and categorical
-Output: (standardized) regression coefficients, t value, df, p value
-Typical plot: scatterplot, boxplot, barplot
+- Number of variables: >=2  
+- Type of variables: 1 DV of any type (e.g. binary responses), >=1 IV both continuos and categorical  
+- Output: (standardized) regression coefficients, t value, df, p value  
+- Typical plot: scatterplot, boxplot, barplot  
 
 ```{r}
 
@@ -214,11 +216,67 @@ Fixed versus random effects
 
 ## Conceptual questions
 
-### What is a t-value
-
 ### What is a z-value
 
+How many *population* standard deviations a raw value is away from the *population* mean.
+
+```{r}
+data = data.frame(x = rnorm(1000, mean=5, sd=1))
+data = data %>%
+  mutate(vals = dnorm(x, mean=5))
+
+data %>%
+  ggplot(aes(x, vals))+
+  geom_line(group=1)
+```
+
+### What is a t-value
+
+How many *sample* standard deviations a raw value is away from the *sample* mean.
+
+```{r}
+sample_data = sample_n(data, 20)
+
+sample_data %>%
+  ggplot()+
+  geom_line(aes(x, vals), group=1, col='red')+
+  geom_line(data=data, aes(x, vals), linetype='dashed')
+```
+
+```{r}
+raw_value = sample_data$x[1]
+cat("Sampled data point\n")
+raw_value
+
+cat("Mean of population\n")
+mean(data$x)
+cat("Standard deviation of population\n")
+sd(data$x)
+
+cat("z_score of sampled data point\n")
+(raw_value - 5)/(1)
+
+cat("Probability of sampling a value smaller than this number from this population\n")
+pnorm((raw_value - 5)/(1))
+
+cat("Mean of sample of 20\n")
+mean(sample_data$x)
+cat("Standard deviation of sample of 20\n")
+sd(sample_data$x)
+
+cat("t_score of sampled data point\n")
+(raw_value - mean(sample_data$x)) / (sd(sample_data$x))
+
+cat("Probability of sampling a value smaller than this number from this sample\n")
+pt((raw_value - mean(sample_data$x)) / (sd(sample_data$x)), df = nrow(sample_data) -1)
+```
+
 ### What is a p-value
+
+Probability of observing your data given your null hypothesis. The smaller is it the more likely you are to 'reject' your null hypothesis. Note that this DOES NOT tell you   
+- the probability that you alternative hypothesis is true or  
+- the probability that your null hypothesis is false.  
+To estimate probabilities of hypotheses depending on data you have observed you'd use Bayes' rule.
 
 ## TIPS:
 
