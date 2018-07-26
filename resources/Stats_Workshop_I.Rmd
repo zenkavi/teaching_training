@@ -1,10 +1,14 @@
 ---
-title: 'Stats workshop'
+title: 'Stats workshop-I'
 output:
 github_document:
 toc: yes
 toc_float: yes
 ---
+
+# Quick stats workshop
+
+Load libraries and set theme for figures
 
 ```{r}
 library(tidyverse)
@@ -19,7 +23,7 @@ To demonstrate most of the methods we'll use a sample dataset provided in R.
 iris
 ```
 
-Always start with getting a sense of your data!!
+### Always start with getting a sense of your data!!
 
 ```{r}
 str(iris)
@@ -29,12 +33,12 @@ str(iris)
 summary(iris)
 ```
 
-# (Linear) Correlation - Pearson's correlation
+## (Linear) Correlation - Pearson's correlation
 
-Number of variables: 2
-Type of variables: continous 
-Output: r value, p value
-Typical plot: scatter plot
+- Number of variables: 2  
+- Type of variables: continous  
+- Output: r value, p value  
+- Typical plot: scatter plot  
 
 ```{r}
 cor(iris$Sepal.Length, iris$Sepal.Width)
@@ -64,20 +68,20 @@ iris %>%
 
 # T-test
 
-Number of variables: 2
-Type of variables: 1 continous, 1 categorical with 2 levels
-Output: t value, df, p value
-Typical plot: boxplot, barplot
+- Number of variables: 2  
+- Type of variables: 1 continous, 1 categorical with 2 levels  
+- Output: t value, df, p value  
+- Typical plot: boxplot, barplot  
 
 Important arguments for the `t.test` function:
-- `alternative`: 
+- `alternative`: depends on what hypothesis you are testing (are the distributions different vs. is the mean of one `greater` or `less` than the other)
 - `paired`: default is `FALSE`; should be set to `TRUE` if the levels refer to different conditions for the same sample
 
 ```{r}
 iris %>%
   filter(Species != "virginica") %>%
   ggplot(aes(Species, Sepal.Length))+
-  geom_violin()
+  geom_boxplot()
 ```
 
 ```{r}
@@ -87,12 +91,30 @@ iris %>%
   geom_density(alpha=0.5)
 ```
 
-# ANOVA
+```{r}
+data = iris %>%
+  filter(Species != "virginica")
+t.test(Sepal.Length ~ Species, data)
+```
 
-Number of variables: >=2
-Type of variables: 1 continous DV, >=1 IV both continuos and categorical 
-Output: F value, df, p value
-Typical plot: boxplot, barplot
+```{r}
+t.test(Sepal.Length ~ Species, data, alternative = "less")
+```
+
+```{r}
+t.test(Sepal.Length ~ Species, data, alternative = "less")$p.value < t.test(Sepal.Length ~ Species, data)$p.value
+```
+
+```{r}
+t.test(Sepal.Length ~ Species, data, alternative = "greater")
+```
+
+## ANOVA
+
+- Number of variables: >=2  
+- Type of variables: 1 continous DV, >=1 IV both continuos and categorical   
+- Output: F value, df, p value  
+- Typical plot: boxplot, barplot  
 
 ```{r}
 iris %>%
@@ -100,7 +122,25 @@ iris %>%
   geom_boxplot()
 ```
 
-# Linear regression
+```{r}
+iris %>%
+  ggplot(aes(Sepal.Length, fill=Species, col=Species))+
+  geom_density(alpha=0.5)
+```
+
+Only tells us that the means for the groups are different. DOES NOT tell us which is greater than the other. To determine that you'd either run pairwise t-tests or linear regression.
+
+```{r}
+summary(aov(Sepal.Length ~ Species, iris))
+```
+
+Pairwise t-test still DOES NOT tell us which distribution has a higher mean compared to the others. It tells us which two distributions are different than each other.
+
+```{r}
+with(iris, pairwise.t.test(Sepal.Length, Species))
+```
+
+## Linear regression
 
 Number of variables: >=2
 Type of variables: 1 continous DV, >=1 IV both continuos and categorical
@@ -111,7 +151,7 @@ Typical plot: scatterplot, boxplot, barplot
 
 ```
 
-# Generalized linear regression
+## Generalized linear regression
 
 Number of variables: >=2
 Type of variables: 1 DV of any type (e.g. binary responses), >=1 IV both continuos and categorical
@@ -122,15 +162,20 @@ Typical plot: scatterplot, boxplot, barplot
 
 ```
 
+## Repeated measures
 
-# What is a t-value
+Within versus between subject factors
+Fixed versus random effects
 
-# What is a z-value
+## Conceptual questions
 
-# What is a p-value
+### What is a t-value
 
+### What is a z-value
 
-# TIPS:
+### What is a p-value
+
+## TIPS:
 
 - I repeat: Always start with getting a good understanding of the structure of your data.  
 - Not fully comprehensive but [here](http://abacus.bates.edu/~ganderso/biology/resources/stats_flow_chart_v2014.pdf) is an example flowchart of how to choose the correct statistical test depending on your data.  

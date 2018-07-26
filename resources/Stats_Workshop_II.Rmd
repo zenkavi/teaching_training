@@ -1,0 +1,16 @@
+---
+title: 'Stats workshop-II'
+output:
+github_document:
+toc: yes
+toc_float: yes
+---
+
+# Model fitting
+
+Load libraries and set theme for figures
+
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+```
