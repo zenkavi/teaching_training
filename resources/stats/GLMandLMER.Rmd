@@ -1,0 +1,28 @@
+---
+title: 'Advanced Methods: GLM and LMER'
+output:
+github_document:
+toc: yes
+toc_float: yes
+---
+
+```{r}
+source(StatsResourcesConfig.R)
+```
+
+
+## Generalized linear regression
+
+- Number of variables: >=2  
+- Type of variables: 1 DV of any type (e.g. binary responses), >=1 IV both continuos and categorical  
+- Output: (standardized) regression coefficients, t value, df, p value  
+- Typical plot: scatterplot, boxplot, barplot  
+
+```{r}
+
+```
+
+## Repeated measures
+
+Within versus between subject factors
+Fixed versus random effects
