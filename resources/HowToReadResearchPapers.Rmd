@@ -1,13 +1,38 @@
 # How to Read Research Papers
 
-These are borrowed and extended from the guidelines [Brian Knutson](http://stanford.edu/~knutson/) provides when teaching [Brain and Decision][http://stanford.edu/~knutson/bad/badsyll.html], which I TA'ed in Spring 2018. I find them as helpful guidelines.  
+These are borrowed and extended from the guidelines [Brian Knutson](http://stanford.edu/~knutson/) provides when teaching [Brain and Decision](http://stanford.edu/~knutson/bad/badsyll.html), which I TA'ed in Spring 2018 and from the Research and Writing Project guidelines of [Psych 1](http://psych-one.weebly.com/), which I TA'ed in Fall 2015, Spring 2016 and Fall 2017.  
+
+There two major types of articles you may come across:   
+1. Empirical articles, which detail one or more experiment to convey novel findings. 
+2. Review articles, which list many experiments on a given subject to convey the state of the field on a given topic.  
+
+For practice it is a good idea to highlight the following points when reading an article and then write a brief paragraph summarizing your takeaways.
 
 ## Empirical articles
 
-Hypothesis  
-IV  
-DV  
-Result  
-Justified?
+### Hypothesis  
 
-## Review papers
+What relationship between which constructs are the authors testing with their experiment?
+
+### Independent variable (IV)  
+
+What is the dimension that the researchers are manipulating?  
+What type of variables is this? Categorical (e.g. different groups or conditions)? Continuous (e.g. )
+
+### Dependent variables (DV)  
+
+What is the construct that they are measuring the change on depending on their manipulation?  
+What type of variables is it (e.g. continuous, categorical? What are its units? What do different values (if categorical) or different ends of the spectrum (if continuous) mean?  
+
+### Result  
+
+What do the authors find (broadly)?  
+Underlined all numbers in the results section and see if you can identify the IV, DV and type of analysis for each result.
+
+### Discussion
+
+Is the conclusion justified given the data they provide?
+
+## Review articles  
+
+What are three main take aways from the review?
