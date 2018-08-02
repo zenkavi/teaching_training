@@ -1,7 +1,13 @@
 # How to Read Research Papers
 
+These are borrowed and extended from the guidelines [Brian Knutson](http://stanford.edu/~knutson/) provides when teaching [Brain and Decision][http://stanford.edu/~knutson/bad/badsyll.html], which I TA'ed in Spring 2018. I find them as helpful guidelines.  
+
+## Empirical articles
+
 Hypothesis  
 IV  
 DV  
 Result  
 Justified?
+
+## Review papers
