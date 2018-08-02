@@ -1,0 +1,32 @@
+---
+title: 'Stats workshop-II'
+output:
+github_document:
+toc: yes
+toc_float: yes
+---
+
+# Model fitting
+
+Load libraries and set theme for figures
+
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+What is a model?
+
+A mathematical way to describe a putative relationship between variables.
+
+1. Describing the model in words
+
+2. Finding the appropriate type of model
+
+3. Coding the model
+
+4. Fitting the mdoel
+
+5. Evaluating the fit
+
+Simulation
