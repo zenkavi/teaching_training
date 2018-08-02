@@ -17,7 +17,7 @@ What relationship between which constructs are the authors testing with their ex
 ### Independent variable (IV)  
 
 What is the dimension that the researchers are manipulating?  
-What type of variables is this? Categorical (e.g. different groups or conditions)? Continuous (e.g. )
+What type of variables is this? Categorical (e.g. different groups or conditions)? Continuous (e.g. parametric manipulation)?
 
 ### Dependent variables (DV)  
 
