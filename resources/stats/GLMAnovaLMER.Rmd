@@ -64,6 +64,8 @@ iris %>%
   ylab("Predicted")
 ```
 
+### GLM with binomial link function
+
 Let's look another dataset: `mtcars`
 
 ```{r}
@@ -99,6 +101,8 @@ mtcars %>%
 ```
 
 What is the problem with this model/figure?
+
+You don't want the model to predict numbers outside the possible range of the actual data (in this case [0, 1]).
 
 ```{r}
 mtcars %>%
@@ -136,10 +140,22 @@ mtcars %>%
   ylab("Predicted")
 ```
 
+### GLM with Poisson link function
+
+For count data you don't want e.g. negative numbers
+
 ```{r}
 mtcars %>%
   ggplot(aes(wt, gear))+
   geom_point()
+```
+
+Poisson model assumption: mean = variance
+
+```{r}
+mtcars %>%
+  group_by(gear) %>%
+  summarise(var_wt = var(wt))
 ```
 
 ```{r}
@@ -163,7 +179,12 @@ mtcars %>%
   ggplot(aes(factor(gear), pred_gear))+
   geom_point()+
   xlab("Actual")+
-  ylab("Predicted")
+  ylab("Predicted")+
+  scale_y_continuous(limits = c(2,5))+
+  geom_hline(yintercept=5, color="red")+
+  geom_hline(yintercept=4, color="red")+
+  geom_hline(yintercept=3, color="red")
+
 ```
 
 ```{r}
@@ -173,6 +194,28 @@ m3_glm = glm(gear ~ wt, mtcars, family = poisson(link = "log"))
 ```{r}
 summary(m3_glm)
 ```
+
+```{r}
+## FIX THISS
+mtcars %>%
+  ggplot(aes(gear, wt))+
+  geom_point()+
+  geom_smooth(method = "glm", method.args = list(family = "poisson"))
+```
+
+```{r}
+mtcars %>%
+  mutate(pred_gear = exp(predict(m3_glm))) %>%
+  ggplot(aes(gear, pred_gear))+
+  geom_point()+
+  xlab("Actual")+
+  ylab("Predicted")
+```
+
+### Assumptions of linear regression
+
+Normality of residuals
+Heteroscasdicity (check spelling): variance should not increase or decrease with mean of values
 
 ### Linking function versus transformation
 
