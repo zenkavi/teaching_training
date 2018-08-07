@@ -90,6 +90,14 @@ m2_lm = lm(vs ~ mpg, mtcars)
 summary(m2_lm)
 ```
 
+```{r}
+mtcars %>%
+  ggplot(aes(mpg, vs))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  scale_y_continuous(breaks = c(0,1))
+```
+
 What is the problem with this model/figure?
 
 ```{r}
@@ -104,7 +112,7 @@ mtcars %>%
 ```
 
 ```{r}
-m2_glm = glm(vs ~ mpg, mtcars, family = binomial)
+m2_glm = glm(vs ~ mpg, mtcars, family = binomial(link = "logit"))
 ```
 
 ```{r}
@@ -113,13 +121,64 @@ summary(m2_glm)
 
 ```{r}
 mtcars %>%
-  mutate(pred_vs = predict(m2_glm)) %>%
+  ggplot(aes(mpg, vs))+
+  geom_point()+
+  geom_smooth(method = "glm", method.args = list(family = "binomial"))+
+  scale_y_continuous(breaks = c(0,1))
+```
+
+```{r}
+mtcars %>%
+  mutate(pred_vs = exp(predict(m2_glm))/(1+exp(predict(m2_glm)))) %>%
   ggplot(aes(factor(vs), pred_vs))+
   geom_point()+
   xlab("Actual")+
   ylab("Predicted")
 ```
 
+```{r}
+mtcars %>%
+  ggplot(aes(wt, gear))+
+  geom_point()
+```
+
+```{r}
+m3_lm = lm(gear ~ wt, mtcars)
+```
+
+```{r}
+summary(m3_lm)
+```
+
+```{r}
+mtcars %>%
+  ggplot(aes(wt, gear))+
+  geom_point()+
+  geom_smooth(method = "lm")
+```
+
+```{r}
+mtcars %>%
+  mutate(pred_gear = predict(m3_lm)) %>%
+  ggplot(aes(factor(gear), pred_gear))+
+  geom_point()+
+  xlab("Actual")+
+  ylab("Predicted")
+```
+
+```{r}
+m3_glm = glm(gear ~ wt, mtcars, family = poisson(link = "log"))
+```
+
+```{r}
+summary(m3_glm)
+```
+
+### Linking function versus transformation
+
+An log transform RT example
+
+Another relevant example: discount rates
 
 ## Repeated measures
 
