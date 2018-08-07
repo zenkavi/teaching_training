@@ -16,26 +16,85 @@ In the (previous notebook)[https://zenkavi.github.io/training/html/CorrelationTT
 ## Generalized linear models
 
 - Number of variables: >=2  
-- Type of variables: 1 DV of any type (e.g. binary responses), >=1 IV both continuos and categorical  
+- Type of variables: 1 DV of any type except continous (e.g. binary responses), >=1 IV both continuos and categorical
 - Output: (standardized) regression coefficients, t value, df, p value  
 - Typical plot: scatterplot, boxplot, barplot  
 
-```{r}
-m1 = lm(Petal.Width ~ Petal.Length+Species, iris)
+### Terminology
 
+General linear model
+Generalized linear model
+Multiple regression
+Multivariate regression
+
+### Evaluating a model
+
+Last time we talked about the `anova` function. This was to compare very specific (limited) set of models with very specific set of structure (nested).
+
+A more general way would be to compare what the model predicts to the actual data and quantify the amount of deviation.
+
+There are also certain statistics that quantify model fit: $R^2$, AIC, BIC, cross-validated accuracy etc.
+
+```{r}
+iris
+```
+
+
+```{r}
+iris %>% 
+  ggplot(aes(Petal.Length, Petal.Width, col=Species))+
+  geom_point()
+```
+
+```{r}
+m1_lm = lm(Petal.Width ~ Petal.Length+Species, iris)
+```
+
+```{r}
+summary(m1_lm)
+```
+
+
+```{r}
 iris %>%
-  mutate(pred_pw = predict(m1)) %>%
+  mutate(pred_pw = predict(m1_lm)) %>%
   ggplot(aes(Petal.Width, pred_pw))+
   geom_point()+
   xlab("Actual")+
   ylab("Predicted")
 ```
 
-```{r}
-m2 = lm(vs ~ mpg, mtcars)
+Let's look another dataset: `mtcars`
 
+```{r}
+mtcars
+```
+
+```{r}
+str(mtcars)
+```
+
+```{r}
 mtcars %>%
-  mutate(pred_vs = predict(m2)) %>%
+  ggplot(aes(factor(vs), mpg))+
+  geom_boxplot()+
+  coord_flip()
+```
+
+
+```{r}
+m2_lm = lm(vs ~ mpg, mtcars)
+```
+
+```{r}
+summary(m2_lm)
+```
+
+What is the problem with this model/figure?
+
+```{r}
+mtcars %>%
+  mutate(pred_vs = predict(m2_lm)) %>%
   ggplot(aes(factor(vs), pred_vs))+
   geom_point()+
   xlab("Actual")+
@@ -43,6 +102,24 @@ mtcars %>%
   geom_hline(yintercept=0, col="red")+
   geom_hline(yintercept=1, col="red")
 ```
+
+```{r}
+m2_glm = glm(vs ~ mpg, mtcars, family = binomial)
+```
+
+```{r}
+summary(m2_glm)
+```
+
+```{r}
+mtcars %>%
+  mutate(pred_vs = predict(m2_glm)) %>%
+  ggplot(aes(factor(vs), pred_vs))+
+  geom_point()+
+  xlab("Actual")+
+  ylab("Predicted")
+```
+
 
 ## Repeated measures
 
@@ -52,3 +129,5 @@ Fixed versus random effects
 ### ANOVA
 
 ### LMER
+
+Remember: the point of a model is to describe a certain pattern in the data accurately. Data is what you should believe in, models can be wrong and need revision! (An example where this principle could be applied: is a hyperbolic model always the best way to describe discounting behavior? Could there be more heuristic ways in certain situations? Could it be domain dependent? Before just fitting the model for every subject you should evaluate whether the model does a good job in capturing the behavior. There is no universal law that says humans must discount hyperbolically!)
