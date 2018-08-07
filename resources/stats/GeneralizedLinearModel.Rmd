@@ -10,7 +10,7 @@ toc_float: yes
 source('StatsResourcesConfig.R')
 ```
 
-In the (previous notebook)[https://zenkavi.github.io/training/html/CorrelationTTestAnova.nb.html] we looked at linear models. In those models the residauals wwere assumed to be independent and normally distributed. 
+In the (previous notebook)[https://zenkavi.github.io/training/html/CorrelationTTestAnova.nb.html] we looked at simple and multiple linear models. Here we'll briefly cover types of data where this method could not be used and ways of dealing with it.
 
 ## Generalized linear models
 
@@ -21,36 +21,88 @@ In the (previous notebook)[https://zenkavi.github.io/training/html/CorrelationTT
 
 ### Terminology
 
-General linear model
-Generalized linear model
-Multiple regression
-Multivariate regression
+First a quick note on clarifying the different terms you might hear involving the term 'regression':  
+(Simple) Linear regression (1 IV) *<* General linear regression (= multivariate regression model (>= 1 DVs) != multinomial regression; e.g. simple or multiple linear (>= 1 IV) regression (1 DV), t-test, ANOVA) *<* Generalized linear regression (e.g. logit, Poisson, probit, multinomial etc.)
+
+Here's how they would look if we write them out in `R`
+
+*Simple linear regression*
+
+```{r eval=FALSE}
+lm(DV ~ IV, data)
+```
+
+*Multiple linear regression*
+
+```{r eval=FALSE}
+lm(DV ~ IV_1+IV_2, data)
+```
+
+*Multivariate linear regression*
+
+```{r eval=FALSE}
+lm(cbind(DV_1, DV_2) ~ IV_1+IV_2, data)
+```
+
+*Logit regression*
+
+```{r eval=FALSE}
+glm(DV ~ IV_1+IV_2, data, family =binomial(link = "logit"))
+```
+
+*Poisson regression* 
+
+```{r eval=FALSE}
+glm(DV ~ IV_1+IV_2, data, family =poisson(link = "log"))
+```
 
 ### Assumptions of linear regression
 
-Normality of residuals
-Heteroscasdicity (check spelling): variance should not increase or decrease with mean of values
+- Normality of residuals  
+- Heteroscedasticity: variance should not increase or decrease with mean of values  
 
-### Linking function versus transformation
+When these are not satisfied using `lm` could lead to confusing/wrong conclusions! 
 
-An log transform RT example
-
-Another relevant example: discount rates
+How do we evaluate an `lm`?
 
 ### Interpreting and evaluating a model
 
-Last time we talked about the `anova` function. This was to compare very specific (limited) set of models with very specific set of structure (nested).
+The idea behind a (simple) linear regression is one familiar from high-school match. We interpret the output of the model as the intercept and slope of a line.
 
-A more general way would be to compare what the model predicts to the actual data and quantify the amount of deviation.
+In other words one unit increase in `x` leads to an `m` unit increase in `y` and `c` is the value of `y` for `x=0`.
 
-There are also certain statistics that quantify model fit: $R^2$, AIC, BIC, cross-validated accuracy etc.
+```{r eval=FALSE}
+y = m*x+c
+```
+
+This linear relation/interpretation will be the continuing theme for different types regressions too BUT the form of `y` and thus the interpretation of `m` will change!  
+
+How do we decide if a model is good in describing the data?  
+
+Last time we talked about a somewhat related question: how do we decide which model is better in describing the data if we have several models? We talked about the `anova` function. This was to compare a very specific/limited set of models with very specific set of structure (nested).
+
+A more general approach would be to compare what the model predicts to the actual data and quantify the amount of deviation. We will make use of this approach in detecting the problems with models that do not apply to specific types of data.
+
+Side note: There are also certain statistics that quantify model fit: $R^2$, AIC, BIC, cross-validated accuracy etc. We'll talk more about these another time.
+
+Side note: Remember the point of a model is to describe a certain pattern in the data accurately. Data is what you should believe in, models can be wrong and need revision! (An example where this principle could be applied: is a hyperbolic model always the best way to describe discounting behavior? Could there be more heuristic ways in certain situations? Could it be domain dependent? Before just fitting the model for every subject you should evaluate whether the model does a good job in capturing the behavior. There is no universal law that says humans must discount hyperbolically!)
 
 #### Interpretive problems for variables with non-normal distributions
+
+What might happen if you don't use the right kind of model to describe a relationship in your data?  
+- Not capturing the effect of a variable equally well across the whole distribution of the DV.  
+- Predicting values outside the range of meaningful values.  
+- Statements on units that do not translate to meaningful changes.  
+
+### Data Examples
+
+Let's remember one model we ran for the `iris` dataset last time.
 
 ```{r}
 iris
 ```
 
+We'll look at the relationship between `Petal.Width` and `Petal.Length`
 
 ```{r}
 iris %>% 
@@ -62,10 +114,13 @@ iris %>%
 m1_lm = lm(Petal.Width ~ Petal.Length+Species, iris)
 ```
 
+What does this model suggest?
+
 ```{r}
 summary(m1_lm)
 ```
 
+### Predicted vs. Actual Plot
 
 ```{r}
 iris %>%
@@ -75,10 +130,6 @@ iris %>%
   xlab("Actual")+
   ylab("Predicted")
 ```
-
-#### Link functions
-
-### GLM with binomial link function
 
 Let's look another dataset: `mtcars`
 
@@ -147,6 +198,18 @@ mtcars %>%
   geom_smooth(method = "glm", method.args = list(family = "binomial"))+
   scale_y_continuous(breaks = c(0,1))
 ```
+
+#### Link functions
+
+The link function provides the relationship between the linear predictor and the mean of the distribution function
+
+### Linking function versus transformation
+
+An log transform RT example
+
+Another relevant example: discount rates
+
+### GLM with binomial link function
 
 What is this model doing? 
 
@@ -240,11 +303,18 @@ summary(m3_glm)
 ```
 
 ```{r}
-## FIX THISS
 mtcars %>%
-  ggplot(aes(gear, wt))+
+  ggplot(aes(wt, gear))+
   geom_point()+
-  geom_smooth(method = "glm", method.args = list(family = "log"))
+  geom_smooth(method = "glm", method.args = list(family = "poisson"), fill="blue", alpha=0.2)+
+  geom_smooth(method = "lm", color="red", fill="red", alpha = 0.2)
+```
+
+```{r}
+mtcars %>%
+  ggplot(aes(wt, log(gear)))+
+  geom_point()+
+  geom_smooth(method = "lm")
 ```
 
 ```{r}
@@ -257,5 +327,3 @@ mtcars %>%
 ```
 
 
-
-Remember: the point of a model is to describe a certain pattern in the data accurately. Data is what you should believe in, models can be wrong and need revision! (An example where this principle could be applied: is a hyperbolic model always the best way to describe discounting behavior? Could there be more heuristic ways in certain situations? Could it be domain dependent? Before just fitting the model for every subject you should evaluate whether the model does a good job in capturing the behavior. There is no universal law that says humans must discount hyperbolically!)
