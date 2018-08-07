@@ -1,5 +1,5 @@
 ---
-title: 'Advanced Methods: GLM and LMER'
+title: 'Advanced Methods: GLM'
 output:
 github_document:
 toc: yes
@@ -12,11 +12,10 @@ source('StatsResourcesConfig.R')
 
 In the (previous notebook)[https://zenkavi.github.io/training/html/CorrelationTTestAnova.nb.html] we looked at linear models. In those models the residauals wwere assumed to be independent and normally distributed. 
 
-
 ## Generalized linear models
 
 - Number of variables: >=2  
-- Type of variables: 1 DV of any type except continous (e.g. binary responses), >=1 IV both continuos and categorical
+- Type of variables: 1 DV of any type that does not have a normally distributed error distribution (e.g. binary responses, count data), >=1 IV both continuos and categorical
 - Output: (standardized) regression coefficients, t value, df, p value  
 - Typical plot: scatterplot, boxplot, barplot  
 
@@ -27,13 +26,26 @@ Generalized linear model
 Multiple regression
 Multivariate regression
 
-### Evaluating a model
+### Assumptions of linear regression
+
+Normality of residuals
+Heteroscasdicity (check spelling): variance should not increase or decrease with mean of values
+
+### Linking function versus transformation
+
+An log transform RT example
+
+Another relevant example: discount rates
+
+### Interpreting and evaluating a model
 
 Last time we talked about the `anova` function. This was to compare very specific (limited) set of models with very specific set of structure (nested).
 
 A more general way would be to compare what the model predicts to the actual data and quantify the amount of deviation.
 
 There are also certain statistics that quantify model fit: $R^2$, AIC, BIC, cross-validated accuracy etc.
+
+#### Interpretive problems for variables with non-normal distributions
 
 ```{r}
 iris
@@ -64,6 +76,8 @@ iris %>%
   ylab("Predicted")
 ```
 
+#### Link functions
+
 ### GLM with binomial link function
 
 Let's look another dataset: `mtcars`
@@ -72,9 +86,15 @@ Let's look another dataset: `mtcars`
 mtcars
 ```
 
+Structure of the data
+
 ```{r}
 str(mtcars)
 ```
+
+Relationship between `vs` (type of motor) and `mpg`
+
+What type of variable is `vs`? What is different about it compared to `mpg`?
 
 ```{r}
 mtcars %>%
@@ -83,6 +103,9 @@ mtcars %>%
   coord_flip()
 ```
 
+If you want to described the relationship between `vs` and `mpg` how would you formulate the question?  
+
+What is the interpretation of the following model?
 
 ```{r}
 m2_lm = lm(vs ~ mpg, mtcars)
@@ -92,6 +115,8 @@ m2_lm = lm(vs ~ mpg, mtcars)
 summary(m2_lm)
 ```
 
+Let's look at what this model does visually
+
 ```{r}
 mtcars %>%
   ggplot(aes(mpg, vs))+
@@ -100,9 +125,7 @@ mtcars %>%
   scale_y_continuous(breaks = c(0,1))
 ```
 
-What is the problem with this model/figure?
-
-You don't want the model to predict numbers outside the possible range of the actual data (in this case [0, 1]).
+What is the problem with the predictions of thi model/figure?
 
 ```{r}
 mtcars %>%
@@ -115,13 +138,7 @@ mtcars %>%
   geom_hline(yintercept=1, col="red")
 ```
 
-```{r}
-m2_glm = glm(vs ~ mpg, mtcars, family = binomial(link = "logit"))
-```
-
-```{r}
-summary(m2_glm)
-```
+What would we have preffed?
 
 ```{r}
 mtcars %>%
@@ -130,6 +147,22 @@ mtcars %>%
   geom_smooth(method = "glm", method.args = list(family = "binomial"))+
   scale_y_continuous(breaks = c(0,1))
 ```
+
+What is this model doing? 
+
+**Predicting the log odds of `vs` instead of `vs` using `mpg`**
+
+```{r}
+m2_glm = glm(vs ~ mpg, mtcars, family = binomial(link = "logit"))
+```
+
+How do we interpret the output?
+
+```{r}
+summary(m2_glm)
+```
+
+What do the predictions of this model look like?
 
 ```{r}
 mtcars %>%
@@ -142,7 +175,7 @@ mtcars %>%
 
 ### GLM with Poisson link function
 
-For count data you don't want e.g. negative numbers
+What kinds of limitations would a distribution of counts have?
 
 ```{r}
 mtcars %>%
@@ -150,13 +183,16 @@ mtcars %>%
   geom_point()
 ```
 
-Poisson model assumption: mean = variance
+Note: Poisson model's assume: mean = variance. This doesn't really hold for this data. There are other types of link functions that can be used too but I won't not cover them for now.
 
 ```{r}
 mtcars %>%
   group_by(gear) %>%
-  summarise(var_wt = var(wt))
+  summarise(var_wt = var(wt),
+            mean_wt = mean(wt))
 ```
+
+If we were to run a simple linear model how would we interpret that?
 
 ```{r}
 m3_lm = lm(gear ~ wt, mtcars)
@@ -166,12 +202,16 @@ m3_lm = lm(gear ~ wt, mtcars)
 summary(m3_lm)
 ```
 
+This is what the linear model does visually:
+
 ```{r}
 mtcars %>%
   ggplot(aes(wt, gear))+
   geom_point()+
   geom_smooth(method = "lm")
 ```
+
+Here are the predictions of the simple linear model. What are some problems?
 
 ```{r}
 mtcars %>%
@@ -187,6 +227,10 @@ mtcars %>%
 
 ```
 
+What is this model doing?
+
+**Predicting the log-linear of `gear` using `wt` instead of the raw `gear` values**
+
 ```{r}
 m3_glm = glm(gear ~ wt, mtcars, family = poisson(link = "log"))
 ```
@@ -200,7 +244,7 @@ summary(m3_glm)
 mtcars %>%
   ggplot(aes(gear, wt))+
   geom_point()+
-  geom_smooth(method = "glm", method.args = list(family = "poisson"))
+  geom_smooth(method = "glm", method.args = list(family = "log"))
 ```
 
 ```{r}
@@ -212,24 +256,6 @@ mtcars %>%
   ylab("Predicted")
 ```
 
-### Assumptions of linear regression
 
-Normality of residuals
-Heteroscasdicity (check spelling): variance should not increase or decrease with mean of values
-
-### Linking function versus transformation
-
-An log transform RT example
-
-Another relevant example: discount rates
-
-## Repeated measures
-
-Within versus between subject factors
-Fixed versus random effects
-
-### ANOVA
-
-### LMER
 
 Remember: the point of a model is to describe a certain pattern in the data accurately. Data is what you should believe in, models can be wrong and need revision! (An example where this principle could be applied: is a hyperbolic model always the best way to describe discounting behavior? Could there be more heuristic ways in certain situations? Could it be domain dependent? Before just fitting the model for every subject you should evaluate whether the model does a good job in capturing the behavior. There is no universal law that says humans must discount hyperbolically!)

@@ -1,0 +1,19 @@
+---
+title: 'Advanced Methods: Repeated Measures'
+output:
+github_document:
+toc: yes
+toc_float: yes
+---
+
+```{r}
+source('StatsResourcesConfig.R')
+```
+## Repeated measures
+
+Within versus between subject factors
+Fixed versus random effects
+
+### ANOVA
+
+### LMER
