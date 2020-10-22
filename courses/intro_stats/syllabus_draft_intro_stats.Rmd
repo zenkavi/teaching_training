@@ -1,0 +1,8 @@
+- Building blocks. What is:  
+	- Data  
+	- Model and parameters  
+	- Probability  
+	- Statistics  
+	- Bayes Rule and its components  
+- Common distributions
+- Model comparison    

@@ -1,0 +1,24 @@
+- Neurobiology  
+	- Neuron  
+	- Action potential  
+	- From neuron to brain  
+	- Human brain and lobes  
+- Methods  
+	- Single cell recording  
+	- EEG  
+	- MEG  
+	- fMRI  
+	- tDCS/TMS  
+	- Calcium imaging  
+	- Demonstrate what data looks like for each of these methods
+	- Caution against reverse inference  
+- Sensory perception  
+- Motor system  
+- Executive control  
+- Attention  
+- Memory  
+- Emotion  
+- Learning  
+- Social cognition  
+
+For each topic when explaining key experiments show what data for the experiment looks/might have looked like and how the authors cnoclude what they did

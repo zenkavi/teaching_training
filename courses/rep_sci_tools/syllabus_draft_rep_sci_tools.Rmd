@@ -1,0 +1,10 @@
+- What is replication
+- Using notebooks  
+	- Sharing notebooks with collaborators  
+	- Version control  
+	- Writing papers in notebooks  
+- Pre-registration  
+- Meta-analysis  
+	- How to search for and save outputs  
+- How to read papers (?) 
+- Data visualization 

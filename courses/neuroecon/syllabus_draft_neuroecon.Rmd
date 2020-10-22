@@ -1,0 +1,19 @@
+- Why is it called neuroecon? Quick historical tour.  
+	- What is econ about it?  
+	- What is neuro about it?  
+	- What has it evolved to?  
+	- Potentially problematic practices to keep in mind:  
+		- Looking for neural correlates of folk terms  
+		- Reverse inference  
+		- Small sample sizes  
+		- fMRI resolution  
+- Value  
+	- Simple choice (computationally and neurally)
+	- Must the brain represent value? (Hayden and Niv, 2020)  
+- Reinforcement learning
+	- The success of the dopamine story 
+- Usual suspects: Risk, ITC and self-control
+	- Do we know how to measure "risk-taking" or "self-control"?  
+	- What to make of lack of computational accounts like in simple choice or reinforcement learning?      
+- Social decision making
+- Network approaches (brand new/tentative) 
