@@ -1,8 +1,19 @@
 - Building blocks. What is:  
 	- Data  
+		- Compare qualitative and quantitative data. How can you convert the former into latter to apply statistics on to it?
 	- Model and parameters  
 	- Probability  
 	- Statistics  
 	- Bayes Rule and its components  
-- Common distributions
-- Model comparison    
+		- In explaining how to compute marginal likelihoods/evidence/denominator could use Gronau et al. (2017) as a starting point for a tutorial 
+- Common distributions  
+	- Chapter 8 of Lambert textbook  
+- Model fit and comparison  
+	- Chapter 10 of Lambert textbook  
+- Data and model fit visualizations   
+- Simulation
+- Example problems comparing (common) frequentist vs. Bayesian solutions 
+	- Pearson correlation
+	- Group difference (ANOVA)
+	- Linear regression
+[order needs work]
