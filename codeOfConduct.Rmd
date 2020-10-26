@@ -1,0 +1,17 @@
+- Interactions between lab members
+	- Any sense of discomfort or discrimination can be brought to the PIs attention, even if the PI is involved, without any impact on position in the lab or retaliation
+- PI expectations
+	- Weekly individual meetings with each lab member (preferably with an agenda sent in advance). Does not need to be all research every week.   
+	- Annual review of code of conduct  
+	- Weekly lab meetings
+- How we deal with data
+	- All code and data will be publicly available
+	- We won't force data to tell our stories
+	- We won't report results without clearly presenting the uncertainty associated with them
+	- As much as possible we will write methods sections as we plan the experiment and collect data
+- How we read papers/think of others' work
+	- We read papers critically focusing on what we can learn from them
+	- We actively try to put preconceptions about others' research practices aside when reading their work
+- Financial matters
+	- PI and research funding is here to support your career as much as possible
+	- Tech purchases and conference travel are encouraged but please be mindful of using resources ethically and allowing them to be made the most of for the purposes of our research. They should not be thought of as additional income or compensation for having chosen to work in a field that is not the most financially lucrative. 
