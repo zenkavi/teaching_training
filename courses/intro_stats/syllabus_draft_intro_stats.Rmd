@@ -1,9 +1,11 @@
 - Building blocks. What is:  
+	- Statistics
 	- Data  
 		- Compare qualitative and quantitative data. How can you convert the former into latter to apply statistics on to it?
-	- Model and parameters  
-	- Probability  
-	- Statistics  
+	- Model and parameters
+		- Building a model is to write a mathematical description of how you believe your data is generated 
+		- Problems with interpreting parameter estimates as something other than mathematical objects (e.g. brain-behavior relationships; should find a non-psych example too)    
+	- Probability    
 	- Bayes Rule and its components  
 		- In explaining how to compute marginal likelihoods/evidence/denominator could use Gronau et al. (2017) as a starting point for a tutorial 
 - Common distributions  
