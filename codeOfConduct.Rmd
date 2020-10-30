@@ -4,6 +4,7 @@
 	- Weekly individual meetings with each lab member (preferably with an agenda sent in advance). Does not need to be all research every week.   
 	- Annual review of code of conduct  
 	- Weekly lab meetings
+		- If discussing paper for lab meeting members should send questions to presenter in advance
 - How we deal with data
 	- All code and data will be publicly available
 	- We won't force data to tell our stories
