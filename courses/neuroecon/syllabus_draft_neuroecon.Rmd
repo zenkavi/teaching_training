@@ -3,8 +3,8 @@
 	- What is neuro about it?  
 	- What has it evolved to?  
 	- Potentially problematic practices to keep in mind:  
-		- Looking for neural correlates of folk terms  
-		- Reverse inference  
+		- Looking for neural correlates of folk terms (Poldrack et al., 2011, Front Neuroinf; Poldrack and Yarkoni, 2016, Annual Rev of Psych)  
+		- Reverse inference (Poldrack, 2006, TICS; Poldrack, 2011, Neuron)  
 		- Small sample sizes  
 		- fMRI resolution  
 - Value  
@@ -12,8 +12,10 @@
 	- Must the brain represent value? (Hayden and Niv, 2020)  
 - Reinforcement learning
 	- The success of the dopamine story 
+	- New data finding incompatibilities (e.g. Li and Jasanoff, 2020, Nature)
 - Usual suspects: Risk, ITC and self-control
-	- Do we know how to measure "risk-taking" or "self-control"?  
+	- Do we know how to measure "risk-taking" or "self-control"?
+		- Eisenberg et al. (2019), Enkavi et al. (2019), Pedroni et al. (2017)  
 	- What to make of lack of computational accounts like in simple choice or reinforcement learning?      
 - Social decision making
 - Network approaches (brand new/tentative) 

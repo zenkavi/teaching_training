@@ -7,4 +7,5 @@
 - Meta-analysis  
 	- How to search for and save outputs  
 - How to read papers (?) 
-- Data visualization 
+- Data visualization
+- Neuro specific - Poldrack et al. (2017), Nat Rev Neuro; Nichols et al. (2017), Nat Neuro 
