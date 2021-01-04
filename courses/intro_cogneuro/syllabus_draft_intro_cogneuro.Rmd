@@ -1,7 +1,8 @@
 - Neurobiology  
-	- Neuron  
-	- Action potential  
-	- From neuron to brain  
+	- Neuron AND glia
+	- Electrical (action potential) and chemical signals
+	  	- What do we know about the role of astrocyctes in regulating neural (and/or other) signals (e.g. Mederos et al., 2020, Nat Neuro showing a role for them in regulating GABA-ergic neurons)
+	- From cell types to brain  
 	- Human brain and lobes  
 - Methods  
 	- Single cell recording  
@@ -21,4 +22,4 @@
 - Learning  
 - Social cognition  
 
-For each topic when explaining key experiments show what data for the experiment looks/might have looked like and how the authors cnoclude what they did
+For each topic when explaining key experiments show what data for the experiment looks/might have looked like and how the authors conclude what they did
