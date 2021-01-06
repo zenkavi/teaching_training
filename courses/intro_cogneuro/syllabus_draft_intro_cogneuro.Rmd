@@ -1,7 +1,7 @@
 - Neurobiology  
 	- Neuron AND glia
 	- Electrical (action potential) and chemical signals
-	  	- What do we know about the role of astrocyctes in regulating neural (and/or other) signals (e.g. Mederos et al., 2020, Nat Neuro showing a role for them in regulating GABA-ergic neurons)
+	  	- What do we know about the role of astrocyctes in regulating neural (and/or other) signals (e.g. Mederos et al., 2020, Nat Neuro showing a role for them in regulating GABA-ergic neurons; Nagai et al. 2021 for a review of behavioral relevance of astrocyctes)
 	- From cell types to brain  
 	- Human brain and lobes  
 - Methods  
