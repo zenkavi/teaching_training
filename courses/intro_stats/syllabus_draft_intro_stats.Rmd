@@ -17,5 +17,5 @@
 - Example problems comparing (common) frequentist vs. Bayesian solutions 
 	- Pearson correlation
 	- Group difference (ANOVA)
-	- Linear regression
+	- Linear regression (brms vs. glmer package in R)
 [order needs work]
