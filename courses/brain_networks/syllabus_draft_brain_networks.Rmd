@@ -1,0 +1,9 @@
+Russ and Justin's syllabus:
+https://github.com/BrainNetworksCourse/brain-networks-course
+- Anatomy
+- Graph Theory
+- Network Modeling
+- Tract Tracing
+- Resting fMRI
+- Task fMRI
+- Structure Functions
