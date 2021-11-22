@@ -1,18 +1,30 @@
-- Neurobiology  
+
+If we think of cognitive neuroscience as the field linking brain and behavior then the "what" is more clearly defined for the brain than it is for the behavior.
+
+# The "What"
+- Neurobiology:
 	- Neuron AND glia
 	- Electrical (action potential) and chemical signals
 	  	- What do we know about the role of astrocyctes in regulating neural (and/or other) signals (e.g. Mederos et al., 2020, Nat Neuro showing a role for them in regulating GABA-ergic neurons; Nagai et al. 2021 for a review of behavioral relevance of astrocyctes)
 	- From cell types to brain  
-	- Human brain and lobes  
-- Methods  
+	- Human brain and lobes
+- Behavior?  
+
+# The "How"
+- Brain methods  
 	- Single cell recording  
 	- EEG  
 	- MEG  
 	- fMRI  
 	- tDCS/TMS  
 	- Calcium imaging  
-	- Demonstrate what data looks like for each of these methods
+- Behavior methods
+- How to relate the two methods to each other
 	- Caution against reverse inference  
+- Demonstrate what data looks like for each of these methods
+
+# The "Findings"
+- "Sensational" and "foundational" findings
 - Sensory perception  
 - Motor system  
 - Executive control  
@@ -21,5 +33,4 @@
 - Emotion  
 - Learning  
 - Social cognition  
-
-For each topic when explaining key experiments show what data for the experiment looks/might have looked like and how the authors conclude what they did
+- For each topic when explaining key experiments show what data for the experiment looks/might have looked like and how the authors conclude what they did
