@@ -2,17 +2,22 @@ Tools for replicable scientific research
 
 - What is replication
 	- Don't be scared of all the available tools
+	- They've been developed by people whose job it is to make sure their products are reliable and transferable and who are trained as engineers to build such systems
+	-	We don't tend to have such training. The point of this course is to familiarize ourselves with some of the tools and understand some design principles to build replicable analysis pipelines
+	- Like most worthwhile things it takes some upfront investment and can seen tedious initially
 - Containers
 	- Docker and singularity
-	- Getting into the practice
-	- The least you should do
+	- Getting into the practice of never running things locally
+	- The least you should do to document requirements
 - Using notebooks (R, Python, Matlab)  
 	- Sharing notebooks with collaborators  
 	- Writing papers in notebooks  
+		- Makefiles
 - Version control  
-- Makefiles
 - Parallelized analyses
 	- R and python examples
+	- Grid search
+	- Cross-validation
 
 Optional:
 - Pre-registration  
@@ -20,3 +25,4 @@ Optional:
 	- How to search for and save outputs  
 - Data visualization
 - Neuro specific - Poldrack et al. (2017), Nat Rev Neuro; Nichols et al. (2017), Nat Neuro
+	- Neurodocker
