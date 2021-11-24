@@ -1,11 +1,22 @@
+Tools for replicable scientific research
+
 - What is replication
-- Using notebooks  
+	- Don't be scared of all the available tools
+- Containers
+	- Docker and singularity
+	- Getting into the practice
+	- The least you should do
+- Using notebooks (R, Python, Matlab)  
 	- Sharing notebooks with collaborators  
-	- Version control  
 	- Writing papers in notebooks  
+- Version control  
+- Makefiles
+- Parallelized analyses
+	- R and python examples
+
+Optional:
 - Pre-registration  
 - Meta-analysis  
 	- How to search for and save outputs  
-- How to read papers (?) 
 - Data visualization
-- Neuro specific - Poldrack et al. (2017), Nat Rev Neuro; Nichols et al. (2017), Nat Neuro 
+- Neuro specific - Poldrack et al. (2017), Nat Rev Neuro; Nichols et al. (2017), Nat Neuro
