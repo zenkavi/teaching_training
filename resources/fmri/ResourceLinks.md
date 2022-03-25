@@ -18,5 +18,3 @@ https://miykael.github.io/nipype_tutorial/
 
 ## Fmriprep
 - https://fmriprep.org/en/stable/index.html
-- https://github.com/brainhack-school2020/stong3_fMRI_processing/blob/master/fMRIPrep_tutorial/fMRIPrep%20pre-processing%20and%20post-processing%20-%20connectivity%20matrices%20extraction%20using%20a%20parcellation.ipynb
-- https://medium.com/@gelana/using-fmriprep-for-fmri-data-preprocessing-90ce4a9b85bd
