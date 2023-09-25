@@ -5,6 +5,7 @@
 - Russ Poldrack's fmri analysis course code: https://github.com/poldrack/fmri-analysis-vm/tree/master/analysis
 - https://lukas-snoek.com/NI-edu/getting_started/about.html
 - https://carpentries-incubator.github.io/SDC-BIDS-fMRI/01-intro-and-preprocessing/index.html
+- https://dartbrains.org/content/intro.html
 
 ## Fieldmaps
 https://lcni.uoregon.edu/kb-articles/kb-0003
