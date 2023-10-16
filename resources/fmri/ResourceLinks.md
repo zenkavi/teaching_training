@@ -19,3 +19,8 @@ https://miykael.github.io/nipype_tutorial/
 
 ## Fmriprep
 - https://fmriprep.org/en/stable/index.html
+
+
+## Heeger comp neuro course
+
+https://www.cns.nyu.edu/~david/courses/compNeuro/syllabus2023.html
